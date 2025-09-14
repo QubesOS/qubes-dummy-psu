@@ -10,6 +10,7 @@ Source0: %{name}-%{version}.tar.gz
 
 BuildRequires: make
 BuildRequires: gcc
+BuildRequires: systemd-rpm-macros
 
 %description
 %{summary}.
