@@ -1,6 +1,6 @@
 [Unit]
 Description=Dummy power supply client service
-ConditionPathExists=/var/run/qubes-service/dummy-psu@%i
+ConditionPathExists=/var/run/qubes-service/dummy-psu-%i
 After=qubes-qrexec-agent.service module-load-dummy-psu.service
 
 [Service]

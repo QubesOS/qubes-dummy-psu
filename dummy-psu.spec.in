@@ -74,6 +74,7 @@ make client
 /etc/qubes/post-install.d/20-dummy-psu.sh
 /usr/bin/qubes-psu-client
 /usr/lib/systemd/system/qubes-psu-client@.service
+/usr/lib/systemd/system/qubes-psu-client@default.service.d/30-default.conf
 /usr/lib/systemd/system/module-load-dummy-psu.service
 
 

@@ -47,3 +47,5 @@ install:
 	install -m 755 receiver/20-dummy-psu.sh $(DESTDIR)/etc/qubes/post-install.d
 	install -m 755 receiver/qubes-psu-client $(DESTDIR)/usr/bin
 	install -m 644 receiver/qubes-psu-client@.service receiver/module-load-dummy-psu.service $(DESTDIR)/usr/lib/systemd/system
+	install -D -m 644 receiver/qubes-psu-client@default.service-default.conf \
+		$(DESTDIR)/usr/lib/systemd/system/qubes-psu-client@default.service.d/30-default.conf
