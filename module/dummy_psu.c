@@ -375,8 +375,7 @@ static int map_get_value(struct battery_property_map *map, const char *key)
 	char buf[MAX_KEYLENGTH];
 	int cr;
 
-	strncpy(buf, key, MAX_KEYLENGTH);
-	buf[MAX_KEYLENGTH - 1] = '\0';
+	strscpy(buf, key);
 
 	cr = strnlen(buf, MAX_KEYLENGTH) - 1;
 	if (cr < 0)
@@ -516,8 +515,7 @@ long dummy_psu_ioctl(struct file *filep, unsigned int cmd, unsigned long arg)
 		}
 		filep->private_data = pobj;
 
-		strncpy(pobj->dev_name, psu_spec.dev_name, MAX_KEYLENGTH);
-		pobj->dev_name[MAX_KEYLENGTH - 1] = '\0';
+		strscpy(pobj->dev_name, psu_spec.dev_name, MAX_KEYLENGTH);
 		pobj->desc.type = strtoenum(psu_spec.dev_type);
 
 		pobj->num_properties = 0;
@@ -618,14 +616,10 @@ long dummy_psu_ioctl(struct file *filep, unsigned int cmd, unsigned long arg)
 					if (parsed_psp == pobj->props[i]) {
 						if (power_supply_is_str_property(
 							    parsed_psp)) {
-							strncpy(pobj->psp_val[parsed_psp]
+							strscpy(pobj->psp_val[parsed_psp]
 									.strval,
 								propval.val,
 								MAX_KEYLENGTH);
-							pobj->psp_val[parsed_psp]
-								.strval[MAX_KEYLENGTH -
-									1] =
-								'\0';
 						} else if (parsed_psp ==
 							   POWER_SUPPLY_PROP_STATUS) {
 							pobj->psp_val[parsed_psp]
